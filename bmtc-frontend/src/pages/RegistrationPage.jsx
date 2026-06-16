@@ -1,6 +1,7 @@
 import { useState } from "react";
 import InputField from "../components/InputField";
 import { validateRegistration } from "../utils/validation";
+import { registerUser } from "../services/authService";
 
 function RegistrationPage() {
 
@@ -28,20 +29,27 @@ function RegistrationPage() {
     setErrors(updatedErrors);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const validationErrors =
     validateRegistration(formData);
 
-setErrors(validationErrors);
+    setErrors(validationErrors);
 
-if (Object.keys(validationErrors).length > 0) {
-    return;
-}
+    if (Object.keys(validationErrors).length > 0) {
+        return;
+    }
 
-console.log("Validation Passed");
-console.log(formData);
+    console.log("Validation Passed");
+    try {
+        const response = await registerUser(formData);
+
+        console.log("Registration successful:", response.data);
+    } 
+    catch (error) {
+        console.error("Registration failed:", error);
+    }
   };
 
   return (
