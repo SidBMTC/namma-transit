@@ -28,7 +28,10 @@ namespace bmtc_backend.Controllers
                 });
             }
 
-            return BadRequest();
+            return BadRequest(new
+            {
+                Message = "Email already exists."
+            });
         }
     }
 }
