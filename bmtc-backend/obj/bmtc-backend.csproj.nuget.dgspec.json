@@ -64,6 +64,10 @@
               "target": "Package",
               "version": "[9.0.15, )"
             },
+            "Microsoft.Extensions.Identity.Core": {
+              "target": "Package",
+              "version": "[10.0.10, )"
+            },
             "Scalar.AspNetCore": {
               "target": "Package",
               "version": "[2.16.6, )"

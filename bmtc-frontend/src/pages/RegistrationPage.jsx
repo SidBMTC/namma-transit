@@ -1,12 +1,13 @@
 import { useState } from "react";
 import InputField from "../components/InputField";
 import { validateRegistration } from "../utils/validation";
-import { registerUser } from "../services/authService";
+import { registerUser } from "../services/registrationService";
 
 function RegistrationPage() {
 
   const [formData, setFormData] = useState({
-    fullName: "",
+     firstName: "",
+    lastName: "",
     email: "",
     mobileNumber: "",
     password: "",
@@ -41,14 +42,29 @@ function RegistrationPage() {
         return;
     }
 
-    console.log("Validation Passed");
     try {
         const response = await registerUser(formData);
+        console.log("Registration successful:", response);
+        alert(response.message);
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          mobileNumber: "",
+          password: "",
+          confirmPassword: ""
+      });
 
-        console.log("Registration successful:", response.data);
+      setErrors({});
     } 
     catch (error) {
-        console.error("Registration failed:", error);
+        if (error.response) {
+            alert(error.response.data.message);
+        } else {
+            alert("Something went wrong. Please try again.");
+        }
+
+        console.error(error);
     }
   };
 
@@ -68,13 +84,22 @@ function RegistrationPage() {
         <form className="space-y-4" onSubmit={handleSubmit}>
 
           <InputField
-            name="fullName"
-            label="Full Name"
+            name="firstName"
+            label="First Name"
             type="text"
-            placeholder="Enter your full name"
-            value={formData.fullName}
+            placeholder="Enter your First name"
+            value={formData.firstName}
             onChange={handleChange}
-            error={errors.fullName}
+            error={errors.firstName}
+          />
+          <InputField
+            name="lastName"
+            label="Last Name"
+            type="text"
+            placeholder="Enter your last name"
+            value={formData.lastName}
+            onChange={handleChange}
+            error={errors.lastName}
           />
 
           <InputField
