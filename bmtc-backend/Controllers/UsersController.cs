@@ -33,5 +33,17 @@ namespace bmtc_backend.Controllers
                 Message = "Email already exists."
             });
         }
+        [HttpPost("login")]
+        public async Task<IActionResult> Login(LoginRequest request)
+        {
+            var result = await _userService.LoginAsync(request);
+
+            if (result.Message == "Login Successful")
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result);
+        }
     }
 }
