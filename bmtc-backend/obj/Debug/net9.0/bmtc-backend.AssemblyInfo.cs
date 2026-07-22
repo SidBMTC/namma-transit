@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("bmtc-backend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d9e5cc2d4711e467a38a4f7fba363a040c7db79a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7d6e093776a88a8fbd5c6e8775107c96aa9c5424")]
 [assembly: System.Reflection.AssemblyProductAttribute("bmtc-backend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("bmtc-backend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
