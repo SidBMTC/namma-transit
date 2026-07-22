@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/namma-transit">
       <App />
     </BrowserRouter>
   </StrictMode>
