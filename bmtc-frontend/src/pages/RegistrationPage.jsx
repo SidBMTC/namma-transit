@@ -1,6 +1,6 @@
 import { useState } from "react";
 import InputField from "../components/InputField";
-import { validateRegistration } from "../utils/validation";
+import { validateRegistration } from "../utils/Validation";
 import { registerUser } from "../services/registrationService";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
