@@ -2,6 +2,9 @@ import { useState } from "react";
 import InputField from "../components/InputField";
 import { validateRegistration } from "../utils/validation";
 import { registerUser } from "../services/registrationService";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 function RegistrationPage() {
 
@@ -15,7 +18,7 @@ function RegistrationPage() {
   });
 
   const [errors, setErrors] = useState({});
-
+  const navigate = useNavigate();
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -44,8 +47,10 @@ function RegistrationPage() {
 
     try {
         const response = await registerUser(formData);
-        console.log("Registration successful:", response);
-        alert(response.message);
+        toast.success("Registration Successful!");
+        setTimeout(() => {
+            navigate("/login");
+        }, 1000);
         setFormData({
           firstName: "",
           lastName: "",
@@ -59,9 +64,9 @@ function RegistrationPage() {
     } 
     catch (error) {
         if (error.response) {
-            alert(error.response.data.message);
+            toast.error(error.response.data.message);
         } else {
-            alert("Something went wrong. Please try again.");
+            toast.error("Something went wrong. Please try again.");
         }
 
         console.error(error);
@@ -159,9 +164,12 @@ function RegistrationPage() {
 
           <p className="text-center text-sm">
             Already have an account?{" "}
-            <a href="#" className="text-blue-600 font-medium">
+            <Link
+                  to="/login"
+                  className="text-blue-600 font-semibold hover:underline"
+              >
               Login
-            </a>
+            </Link>
           </p>
 
         </form>
