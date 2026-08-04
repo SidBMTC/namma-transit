@@ -1,0 +1,27 @@
+# Build folders
+bin/
+obj/
+
+# User-specific files
+.vs/
+*.user
+*.suo
+
+# Rider
+.idea/
+
+# Visual Studio Code
+.vscode/
+
+# Logs
+*.log
+
+# Environment files
+.env
+.env.*
+
+# Publish output
+publish/
+
+# Test results
+TestResults/
