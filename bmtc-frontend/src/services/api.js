@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:5176/api",
+  baseURL: "https://namma-transit-backend.onrender.com/api",
 });
 
 api.interceptors.request.use(
